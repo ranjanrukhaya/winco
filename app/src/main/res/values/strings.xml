@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Cowin</string>
+
+    <string name="certificate_label_single">%s Certificate registered under %s</string>
+    <string name="certificate_label_multi">%s Certificates registered under %s</string>
+    <string name="refresh_text_prefix">Select a mobile number below</string>
+    <string name="change_mobile_label">Change mobile number</string>
+    <string name="certificates_fetch_error">Unable to fetch certificates due to a network error. Kindly check your connection and retry</string>
+    <string name="refresh_text_suffix">to update the vaccine certificate information. We will OTP verify the number for the same</string>
+    <string name="change_messge">No certificates linked with the mobile number %s. Enter the mobile number used at the time of vaccination registration on CoWin app</string>
+</resources>

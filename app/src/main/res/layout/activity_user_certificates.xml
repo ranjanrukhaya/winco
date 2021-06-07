@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".growth.cowin.certificates.ui.UserCertificatesActivity">
+
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/flight_grey_1" />
+
+    <TextView
+        android:id="@+id/certificates_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingStart="20dp"
+        android:text="Vaccine Certificates"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/back_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/refresh_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_refresh_blue"
+        app:layout_constraintEnd_toStartOf="@+id/certificates_refresh"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/certificates_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:text="Refresh"
+        android:textColor="#008cff"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bottom_view_header"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffedd1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/certificates_header" />
+
+    <TextView
+        android:id="@+id/total_certificates_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:layout_marginStart="18dp"
+        android:visibility="gone"
+        android:text="You’ve 4 certificates linked to your account"
+        android:textColor="#4a4a4a"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_view_header"
+        app:layout_constraintStart_toStartOf="@+id/bottom_view_header"
+        app:layout_constraintTop_toTopOf="@+id/bottom_view_header" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_view_header">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/certificates_group_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingBottom="16dp"
+            tools:itemCount="1"
+            tools:listitem="@layout/cowin_certificate_group" />
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/tnc_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="All certificates have been linked to your MMT profile the information is saved securely (using encryption) in MMT servers and will not be shared with anyoune. view TnCs"
+        android:textColor="#9b9b9b"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/scroll_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <View
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#eaf5ff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/bottom_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:text="+ ADD MORE CERTIFICATES"
+        android:visibility="gone"
+        android:textStyle="bold"
+        android:textColor="#008cff"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_view"
+        app:layout_constraintStart_toStartOf="@+id/bottom_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_view" />
+
+    <FrameLayout
+        android:id="@+id/progress_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/certificates_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/fetching_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:visibility="gone"
+        android:text="Fetching your certificates…"
+        android:textColor="#4a4a4a"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/progress_view"
+        app:layout_constraintTop_toTopOf="@+id/progress_view" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/loader_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/progress_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fetching_label">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/cowin_certificate_loader_item"/>
+            <include layout="@layout/cowin_certificate_loader_item"/>
+            <include layout="@layout/cowin_certificate_loader_item"/>
+            <include layout="@layout/cowin_certificate_loader_item"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <ImageView
+        android:id="@+id/no_certificates_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_no_certificates"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/no_certificates_label"
+        app:layout_constraintTop_toBottomOf="@+id/certificates_header"/>
+
+    <TextView
+        android:id="@+id/no_certificates_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="35dp"
+        android:textAlignment="center"
+        tools:text="No certificates linked with the mobile number 78381-89031. Enter the mobile number used at the time of vaccination registration on CoWin app"
+        android:textColor="#4a4a4a"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/change_no_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        tools:text="CHANGE MOBILE NUMBER"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/no_certificates_label"/>
+
+    <ImageView
+        android:id="@+id/refresh_icon_error"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="35dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_refresh_blue"
+        android:visibility="gone"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/certificates_refresh_error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_no_btn"/>
+
+    <TextView
+        android:id="@+id/certificates_refresh_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Refresh"
+        android:textStyle="bold"
+        android:textColor="#008cff"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:textAllCaps="true"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/refresh_icon_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_no_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

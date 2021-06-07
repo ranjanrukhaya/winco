@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="16dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@id/cowin_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Abhinav Mittal" />
+
+        <TextView
+            android:id="@id/cowin_user_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#4a4a4a"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cowin_user"
+            tools:text="Male, 16 Mar 1987" />
+
+        <TextView
+            android:id="@id/cowin_user_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#4a4a4a"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cowin_user_dob"
+            tools:text="Registered with 78381-89031" />
+
+        <ImageView
+            android:id="@+id/dose1_view"
+            android:layout_width="123dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cowin_user_no"
+            android:background="@drawable/certificate_border"/>
+
+        <TextView
+            android:id="@+id/dose1_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="#1a7971"
+            android:maxLines="2"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/dose1_view"
+            app:layout_constraintEnd_toEndOf="@+id/dose1_view"
+            app:layout_constraintTop_toTopOf="@+id/dose1_view"
+            app:layout_constraintBottom_toBottomOf="@+id/dose1_view"
+            android:textAlignment="center"
+            android:paddingHorizontal="20dp"
+            tools:text=" Scheduled For 27 May 2021" />
+
+        <TextView
+            android:id="@+id/dose1_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#9b9b9b"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dose1_view"
+            android:text="Dose 1" />
+
+        <View
+            android:id="@+id/dose2_view"
+            android:layout_width="123dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/dose1_view"
+            app:layout_constraintTop_toBottomOf="@+id/cowin_user_no"
+            android:background="@drawable/vaccine_scheduled_view"/>
+
+        <TextView
+            android:id="@+id/dose2_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#9b9b9b"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toEndOf="@+id/dose1_view"
+            app:layout_constraintTop_toBottomOf="@+id/dose2_view"
+            android:text="Dose 2" />
+
+        <TextView
+            android:id="@+id/dose2_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="#1a7971"
+            android:maxLines="2"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/dose2_view"
+            app:layout_constraintEnd_toEndOf="@+id/dose2_view"
+            app:layout_constraintTop_toTopOf="@+id/dose2_view"
+            app:layout_constraintBottom_toBottomOf="@+id/dose2_view"
+            android:textAlignment="center"
+            android:paddingHorizontal="20dp"
+            tools:text=" Scheduled For 27 May 2021" />
+
+        <View
+            android:id="@+id/bottom_view_left"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bottom_view_right"
+            app:layout_constraintTop_toBottomOf="@+id/dose1_label"
+            android:background="#eaf5ff"/>
+
+        <ImageView
+            android:id="@+id/view_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintStart_toStartOf="@+id/bottom_view_left"
+            app:layout_constraintEnd_toStartOf="@+id/view_label"
+            app:layout_constraintTop_toTopOf="@+id/bottom_view_left"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_view_left"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:src="@drawable/ic_view_certificate"/>
+
+        <TextView
+            android:id="@+id/view_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#008cff"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/view_image"
+            app:layout_constraintEnd_toEndOf="@+id/bottom_view_left"
+            app:layout_constraintTop_toTopOf="@+id/bottom_view_left"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_view_left"
+            android:text="View" />
+
+        <View
+            android:id="@id/bottom_view_right"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toEndOf="@+id/bottom_view_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dose1_label"
+            android:background="#eaf5ff"/>
+
+
+        <ImageView
+            android:id="@+id/share_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintStart_toStartOf="@+id/bottom_view_right"
+            app:layout_constraintEnd_toStartOf="@+id/share_label"
+            app:layout_constraintTop_toTopOf="@+id/bottom_view_right"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_view_right"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:src="@drawable/ic_view_certificate"/>
+
+        <TextView
+            android:id="@+id/share_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#008cff"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/share_image"
+            app:layout_constraintEnd_toEndOf="@+id/bottom_view_right"
+            app:layout_constraintTop_toTopOf="@+id/bottom_view_right"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_view_right"
+            android:text="Share" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
