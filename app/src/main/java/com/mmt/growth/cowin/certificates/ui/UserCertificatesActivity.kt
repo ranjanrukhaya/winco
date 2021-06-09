@@ -34,7 +34,13 @@ class UserCertificatesActivity : AppCompatActivity() {
                 var mobile = intent.getStringExtra(CowinConstants.MOBILE_KEY)
                 var token = intent.getStringExtra(CowinConstants.TOKEN_KEY)
                 @Suppress("UNCHECKED_CAST")
-                return application?.let { UserCertificatesViewModel(this@UserCertificatesActivity, mobile, token) } as T
+                return application?.let {
+                    UserCertificatesViewModel(
+                        this@UserCertificatesActivity,
+                        mobile,
+                        token
+                    )
+                } as T
             }
         })[UserCertificatesViewModel::class.java]
     }
@@ -170,6 +176,10 @@ class UserCertificatesActivity : AppCompatActivity() {
     }
 
     private fun handleRefresh(cowinCertificates: List<CowinCertificate>) {
+        if (cowinCertificates.size == 1) {
+
+            return
+        }
         val refreshSheet = layoutInflater.inflate(R.layout.bottom_sheet_refresh, null)
         val dialog = BottomSheetDialog(this)
         dialog.setContentView(refreshSheet)

@@ -144,6 +144,22 @@ class UserCertificatesItemViewHolder(itemView: View) : RecyclerView.ViewHolder(i
             intent.putExtra(CowinConstants.BENEFICIARY_KEY, beneficiary)
             itemView.context.startActivity(intent)
         }
+
+        itemView.share_image.setOnClickListener {
+            shareCertificate(beneficiary)
+        }
+
+        itemView.share_label.setOnClickListener {
+            shareCertificate(beneficiary)
+        }
+
+        itemView.bottom_view_right.setOnClickListener {
+            shareCertificate(beneficiary)
+        }
+    }
+
+    private fun shareCertificate(beneficiary: Beneficiary) {
+
     }
 
     // TODO Ranjan remove context

@@ -1,24 +1,27 @@
 package com.mmt.growth.cowin.certificates.ui
 
-import android.app.DownloadManager
 import android.content.Context
-import android.net.Uri
-import android.os.Environment
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.*
+import com.mmt.growth.cowin.CowinConstants
 import com.mmt.growth.cowin.certificates.data.db.Certificates
 import com.mmt.growth.cowin.certificates.data.db.CertificatesDb
 import com.mmt.growth.cowin.certificates.model.CertificatesResponse
 import com.mmt.growth.cowin.certificates.repository.CertificatesDbRepository
 import com.mmt.growth.cowin.certificates.repository.CertificatesDummyRepo
 import com.mmt.growth.cowin.certificates.repository.CertificatesRepository
+import com.mmt.growth.cowin.certificates.service.PdfDownloaderService
 import com.mmt.growth.cowin.certificates.util.Resource
 import com.mmt.growth.cowin.certificates.util.UserCertificatesUtil.getCertificateResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.Exception
+import java.net.URL
 
 
 class UserCertificatesViewModel(
@@ -82,15 +85,12 @@ class UserCertificatesViewModel(
 
                 // Insert in db
                 if (certificatesApi.success
-                    && certificatesApi?.result?.extendedUser?.cowinCertificates?.isNotEmpty() == true
+                    && certificatesApi.result?.extendedUser?.cowinCertificates?.isNotEmpty() == true
                 ) {
-                    if (certificatesFromDb.isNotEmpty()) {
-                        // Ranjan Update DB
-                    } else {
-                        certificatesDbRepository.insert(certificatesApi)
-                        // Download certificates in internal storage and update table
-                        downloadCertificateToInternalStorage(certificatesApi)
-                    }
+                    certificatesDbRepository.insert(certificatesApi)
+                    // Download certificates in internal storage and update table
+                    downloadCertificateToInternalStorage(certificatesApi)
+                    
                 }
             }
 
@@ -102,16 +102,26 @@ class UserCertificatesViewModel(
         certificatesResponse.result?.extendedUser?.cowinCertificates?.forEach { cowinCertificate ->
             cowinCertificate.beneficiaryList?.forEach { beneficiary ->
 
-                val request  = DownloadManager.Request(Uri.parse(beneficiary.certificateUrl))
-                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
-                request.setTitle("Download")
-                request.setDescription(beneficiary.beneficiaryRefId + " file is downloading..")
+                val downloaderService = Intent(context, PdfDownloaderService::class.java).apply {
+                    putExtra(CowinConstants.BENEFICIARY_KEY, beneficiary)
+                }
+                context.startService(downloaderService)
 
-                request.allowScanningByMediaScanner()
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${System.currentTimeMillis()}")
 
-                //val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                /*try {
+                    val url = URL(beneficiary.certificateUrl)
+                    val inputStream = url.openStream()
+                    val byteArray = inputStream.readBytes()
+                    val outputStream =
+                        context.openFileOutput(beneficiary.beneficiaryRefId + ".pdf", MODE_PRIVATE)
+                    outputStream.write(byteArray)
+
+                    inputStream.close();
+                    outputStream.close()
+                } catch (e: Exception) {
+                    e.message?.let { Log.e("Model", it) }
+                }*/
+
             }
         }
     }

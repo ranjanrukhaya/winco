@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "certificates_table")
 data class Certificates(
     var uuid: String? = null,
+    @PrimaryKey(autoGenerate = false)
     var beneficiaryRefId: String,
     var name: String,
     var registeredMobile: String,
@@ -25,10 +26,8 @@ data class Certificates(
     var updatedDateApi: Long,
     var cotravelerId: String? = null,
     var localFileName: String? = null,
-    var localFileUri: String? = null,
     var createdDate: Long,
     var updatedDate: Long
 ) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+
 }

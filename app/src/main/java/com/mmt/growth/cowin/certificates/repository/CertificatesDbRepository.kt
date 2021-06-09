@@ -33,7 +33,6 @@ class CertificatesDbRepository(private val certificatesDao: CertificatesDao) {
                     beneficiary.updatedDate,
                     null,
                     null,
-                    null,
                     System.currentTimeMillis(),
                     System.currentTimeMillis()
                 )
@@ -46,8 +45,12 @@ class CertificatesDbRepository(private val certificatesDao: CertificatesDao) {
         }
     }
 
-    suspend fun update() {
+    suspend fun update(newCertificates: Certificates) {
+        certificatesDao.update(newCertificates)
+    }
 
+    suspend fun updateCertificate(fileName: String, id: String, updateTime: Long) {
+        certificatesDao.updateCertificate(fileName, id, updateTime)
     }
 
     suspend fun getAllCertificates(): List<Certificates> {

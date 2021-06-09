@@ -189,7 +189,7 @@
             app:layout_constraintTop_toTopOf="@+id/bottom_view_right"
             app:layout_constraintBottom_toBottomOf="@+id/bottom_view_right"
             app:layout_constraintHorizontal_chainStyle="packed"
-            android:src="@drawable/ic_view_certificate"/>
+            android:src="@drawable/ic_share_blue"/>
 
         <TextView
             android:id="@+id/share_label"

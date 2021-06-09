@@ -8,4 +8,6 @@
     <string name="certificates_fetch_error">Unable to fetch certificates due to a network error. Kindly check your connection and retry</string>
     <string name="refresh_text_suffix">to update the vaccine certificate information. We will OTP verify the number for the same</string>
     <string name="change_messge">No certificates linked with the mobile number %s. Enter the mobile number used at the time of vaccination registration on CoWin app</string>
+    <string name="share_message">Check out my vaccination certificate that I just downloaded from MakeMyTrip. You can also login to the MakeMyTrip app and download your vaccination certificate by downloading by tapping on the following link:</string>
+    <string name="share_title">Sharing certificate</string>
 </resources>
